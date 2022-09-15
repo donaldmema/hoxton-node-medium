@@ -1,0 +1,56 @@
+{import sha256 from 'crypto-js/sha256'
+
+const hash = sha256('Text')
+
+https://cryptojs.gitbook.io/docs/
+}
+
+
+{https://www.npmjs.com/package/bcrypt}
+
+
+{
+    Table users {
+  id int [pk]
+  username text
+  email text
+  password text
+}
+  
+Table posts {
+  id int [pk]
+  userId int
+}
+
+Table claps {
+  id int [pk]
+  postId int
+  userId int
+}
+
+Table comments {
+  id int [pk]
+  postId int
+  userId int
+}
+
+Table relationships {
+  id int [pk]
+  followerId int
+  beingFollowedId int
+}
+
+Ref: "users"."id" < "posts"."userId"
+
+Ref: "users"."id" < "relationships"."followerId"
+
+Ref: "users"."id" < "relationships"."beingFollowedId"
+
+Ref: "posts"."id" < "claps"."postId"
+
+Ref: "users"."id" < "claps"."userId"
+
+Ref: "posts"."id" < "comments"."postId"
+
+Ref: "users"."id" < "comments"."userId"
+}
